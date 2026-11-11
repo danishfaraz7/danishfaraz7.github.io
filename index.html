@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danish Faraz Portfolio</title>
+<meta name="description" content="Danish Faraz, Cyber Threat Intelligence Specialist. CTI, attack surface management, dark web monitoring and security automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: an intelligence dossier. Banner strip, numbered sections, mono labels, one signal-orange accent. */
+:root{
+  --bg:#f3f5f7; --panel:#ffffff; --ink:#111b26; --muted:#5a6876; --line:#d6dce2; --accent:#d9480f; --accent-soft:#fde9df;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0d141b;--panel:#141d27;--ink:#e8edf2;--muted:#93a1af;--line:#26323f;--accent:#ff8a4c;--accent-soft:#2a1d14;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0d141b;--panel:#141d27;--ink:#e8edf2;--muted:#93a1af;--line:#26323f;--accent:#ff8a4c;--accent-soft:#2a1d14;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+
+.banner{background:var(--ink);color:var(--bg);padding:7px 0}
+.banner .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.banner .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px}
+
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px 22px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+nav .brand{font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none}
+nav ul{display:flex;gap:4px 18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--accent)}
+
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:end}
+.hero .tag{color:var(--accent);margin:0 0 14px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,7vw,76px);line-height:1;letter-spacing:-.02em;margin:0 0 18px;text-wrap:balance}
+.lede{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 26px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 18px;border:1px solid var(--ink);text-decoration:none;font-weight:500;border-radius:4px}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--accent);color:var(--bg)}
+
+.file{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px}
+.file h2{margin:0 0 12px;font-size:12.5px}
+.file dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px}
+.file dt{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.file dd{margin:0;font-weight:500}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.stat{padding:26px 18px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--display);font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14.5px}
+
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;gap:16px;align-items:baseline;margin-bottom:28px}
+.sec-head .n{color:var(--accent)}
+h2.title{font-family:var(--display);font-size:clamp(28px,4vw,38px);margin:0;letter-spacing:-.01em;text-wrap:balance}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about p{margin:0 0 14px;max-width:62ch}
+
+.focus{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px}
+.card h3{font-family:var(--display);font-size:20px;margin:0 0 6px}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+
+.cycle{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+.cycle button{font:inherit;color:inherit;background:none;border:0;border-right:1px solid var(--line);padding:14px 8px;cursor:pointer;text-align:left}
+.cycle button:last-child{border-right:0}
+.cycle button small{display:block;color:var(--muted);font-family:var(--mono);font-size:11.5px}
+.cycle button[aria-selected="true"]{background:var(--accent-soft);box-shadow:inset 0 -3px 0 var(--accent)}
+.cycle-out{margin-top:14px;padding:18px 20px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;min-height:84px}
+.cycle-out p{margin:0}
+
+.timeline{display:grid;gap:0}
+.role{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.role:first-child{border-top:0;padding-top:0}
+.role .who{color:var(--muted)}
+.role h3{font-family:var(--display);font-size:22px;margin:0 0 6px}
+.role ul{margin:8px 0 0;padding-left:18px}
+.role li{margin:5px 0}
+.pill{display:inline-block;padding:2px 9px;border:1px solid var(--accent);color:var(--accent);border-radius:99px;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;margin-left:8px;vertical-align:middle}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{font:inherit;font-size:14.5px;padding:6px 14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:99px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.proj{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.proj[hidden]{display:none}
+.proj h3{font-family:var(--display);font-size:21px;margin:0}
+.proj p{margin:0;color:var(--muted);font-size:15.5px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.chip{font-family:var(--mono);font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;color:var(--muted)}
+
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tools .card p{color:var(--ink)}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;margin:0;padding:0}
+.certs li{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;font-weight:500}
+.certs li span{display:block;color:var(--muted);font-weight:400;font-size:14px}
+
+.recog{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.recog ul{margin:8px 0 0;padding-left:18px}
+
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.contact h2.title{margin-bottom:14px}
+.links{display:grid;gap:10px}
+.links a{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:6px;text-decoration:none}
+.links a:hover{border-color:var(--accent)}
+.links span:last-child{color:var(--muted);word-break:break-all;text-align:right}
+footer{padding:26px 0 40px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero-grid,.about,.contact{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .focus,.certs{grid-template-columns:1fr 1fr}
+  .cycle{grid-template-columns:repeat(3,1fr)}
+  .cycle button:nth-child(3){border-right:0}
+  .cycle button:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  .role{grid-template-columns:1fr;gap:6px}
+  .projects,.tools,.recog{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .focus,.certs{grid-template-columns:1fr}
+  header.hero{padding-top:40px}
+}
+
+header.hero{position:relative;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.4}
+.hero-grid{position:relative}
+.radar-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px}
+.radar-wrap h3{font-family:var(--display);font-size:22px;margin:0 0 6px}
+.radar-wrap p{margin:0 0 14px;color:var(--muted);font-size:15.5px}
+#radar{width:100%;max-width:520px;height:auto;margin:0 auto;display:block}
+#radar .ring{fill:none;stroke:var(--line);stroke-width:1}
+#radar .axis{stroke:var(--line);stroke-width:1}
+#radar .shape{fill:var(--accent);fill-opacity:.2;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+#radar .dot{fill:var(--accent)}
+#radar text{fill:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.bars li{display:grid;grid-template-columns:150px 1fr 34px;gap:10px;align-items:center;font-size:14.5px}
+.bars .track{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bars .fill{display:block;height:100%;background:var(--accent);border-radius:99px}
+.bars .v{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.radar-wrap .note{margin:16px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:14px 0 0;text-transform:uppercase;letter-spacing:.05em}
+@media (max-width:860px){.radar-wrap{grid-template-columns:1fr}.bars li{grid-template-columns:130px 1fr 30px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="banner mono"><div class="wrap"><span><i class="dot"></i>Portfolio of a threat intelligence analyst</span><span>Chennai, India</span></div></div>
+
+<nav aria-label="Sections"><div class="wrap">
+  <a class="brand" href="#top">Danish Faraz</a>
+  <ul class="mono">
+    <li><a href="#about">About</a></li>
+    <li><a href="#cycle">Method</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#toolkit">Toolkit</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top"><canvas id="net" aria-hidden="true"></canvas><div class="wrap hero-grid">
+  <div>
+    <p class="tag mono">Cyber Threat Intelligence</p>
+    <h1>I turn raw threat data into decisions people can act on.</h1>
+    <p class="lede">Seven years across a Big 4 SOC, a global media group and an enterprise telecom. I build intelligence functions, track threat actors, map external attack surface and write the automation that keeps it running.</p>
+    <div class="btns">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="#projects">See what I build</a>
+    </div>
+  </div>
+  <aside class="file" aria-label="Quick facts">
+    <h2 class="mono">Analyst file</h2>
+    <dl>
+      <dt>Role</dt><dd>CTI Specialist, Assistant Manager</dd>
+      <dt>Now</dt><dd>Tata Communications, GIS-CTI</dd>
+      <dt>Base</dt><dd>Chennai, India</dd>
+      <dt>Certs</dt><dd>CEH, CTIA, AWS, Mandiant</dd>
+      <dt>Stack</dt><dd>Python, Flask, KQL, STIX/TAXII</dd>
+    </dl>
+  </aside>
+</div></header>
+
+<div class="wrap stats" role="list">
+  <div class="stat" role="listitem"><b>7+</b><span>years in security operations and intelligence</span></div>
+  <div class="stat" role="listitem"><b>3</b><span>organisations: EY, WPP, Tata Communications</span></div>
+  <div class="stat" role="listitem"><b>37+</b><span>intelligence sources in one advisory pipeline</span></div>
+  <div class="stat" role="listitem"><b>5</b><span>security researcher Hall of Fame listings</span></div>
+</div>
+
+<main>
+<section id="about"><div class="wrap">
+  <div class="sec-head"><span class="mono n">01</span><h2 class="title">About</h2></div>
+  <div class="about">
+    <div>
+      <p>I lead threat intelligence work for the GIS-CTI team at Tata Communications. My output goes to SecOps, threat hunting, vulnerability management and executives, and each audience gets a different product.</p>
+      <p>Before that I built the CTI function at WPP from scratch, and spent three years in the Security Operations Centre at EY. That mix means I know what a SOC needs from intelligence and what a CISO needs to hear.</p>
+    </div>
+    <div>
+      <p>I like problems where the data is messy and the stakes are real: exposed assets nobody owns, a threat actor targeting your sector, a vulnerability that matters more than its score says.</p>
+      <p>When a task repeats, I script it. Most of the tools below started as a manual workflow I was tired of doing.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="focus"><div class="wrap">
+  <div class="sec-head"><span class="mono n">02</span><h2 class="title">What I do</h2></div>
+  <div class="focus">
+    <div class="card"><h3>Threat actor profiling</h3><p>Tracking groups, their tooling and targeting, and turning it into profiles defenders can use.</p></div>
+    <div class="card"><h3>Attack surface management</h3><p>Finding and prioritising externally exposed assets, then getting findings to the right owner.</p></div>
+    <div class="card"><h3>Dark web monitoring</h3><p>Watching for leaked credentials, access sales and brand mentions, and validating what is real.</p></div>
+    <div class="card"><h3>Vulnerability intelligence</h3><p>Ranking CVEs by exploitation evidence and exposure, not only by severity score.</p></div>
+    <div class="card"><h3>DFIR support</h3><p>IOC investigation and validation that helps responders scope an incident faster.</p></div>
+    <div class="card"><h3>Authorised red teaming</h3><p>Scoped external assessments that show what an attacker would find first.</p></div>
+  </div>
+  <div class="radar-wrap">
+    <div>
+      <h3>Where my time goes</h3>
+      <p>Seven focus areas from my work in CTI and security engineering, shown as a profile and as a ranked list.</p>
+      <ul class="bars" id="bars"></ul>
+      <p class="note">Self-assessed, out of 10</p>
+    </div>
+    <svg id="radar" viewBox="-80 0 580 420" role="img" aria-label="Radar chart of seven focus areas"></svg>
+  </div>
+</div></section>
+
+<section id="cycle"><div class="wrap">
+  <div class="sec-head"><span class="mono n">03</span><h2 class="title">How I work</h2></div>
+  <p style="margin:0 0 18px;color:var(--muted);max-width:62ch">I run intelligence as a cycle, not a feed. Pick a stage to see how I apply it.</p>
+  <div class="cycle" role="tablist" aria-label="Intelligence cycle">
+    <button role="tab" aria-selected="true" data-i="0"><small>01</small>Direction</button>
+    <button role="tab" aria-selected="false" data-i="1"><small>02</small>Collection</button>
+    <button role="tab" aria-selected="false" data-i="2"><small>03</small>Processing</button>
+    <button role="tab" aria-selected="false" data-i="3"><small>04</small>Analysis</button>
+    <button role="tab" aria-selected="false" data-i="4"><small>05</small>Dissemination</button>
+    <button role="tab" aria-selected="false" data-i="5"><small>06</small>Feedback</button>
+  </div>
+  <div class="cycle-out" id="cycle-out" role="tabpanel" aria-live="polite"><p></p></div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="sec-head"><span class="mono n">04</span><h2 class="title">Experience</h2></div>
+  <div class="timeline">
+    <div class="role">
+      <div class="who mono">Tata Communications<br>GIS-CTI team</div>
+      <div>
+        <h3>Assistant Manager, Cyber Threat Intelligence <span class="pill">Current</span></h3>
+        <ul>
+          <li>Produce intelligence for SecOps, threat hunting, vulnerability management and executive stakeholders.</li>
+          <li>Run authorised external attack surface and red team assessments across the group.</li>
+          <li>Built automation for IOC enrichment, advisory aggregation, weekly CISO briefs and vulnerability alerting.</li>
+          <li>Named best performer for a quarter with a spot recognition award in 2026.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="role">
+      <div class="who mono">WPP<br>Global media group</div>
+      <div>
+        <h3>Cyber Threat Intelligence</h3>
+        <ul>
+          <li>Built the CTI function from scratch: requirements, sources, tooling and reporting.</li>
+          <li>Delivered attack surface, dark web and threat actor intelligence to security leadership.</li>
+          <li>Received a spot recognition award for outstanding individual performance in 2025.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="role">
+      <div class="who mono">EY<br>Security Operations Centre</div>
+      <div>
+        <h3>SOC Analyst</h3>
+        <ul>
+          <li>Three years of monitoring, triage and incident escalation across SIEM platforms.</li>
+          <li>Foundation for the detection and response perspective I bring to intelligence work.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="sec-head"><span class="mono n">05</span><h2 class="title">Tools I have built</h2></div>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button aria-pressed="true" data-f="all">All</button>
+    <button aria-pressed="false" data-f="intel">Intelligence</button>
+    <button aria-pressed="false" data-f="asm">Attack surface</button>
+    <button aria-pressed="false" data-f="auto">Automation</button>
+  </div>
+  <div class="projects">
+    <article class="proj" data-t="intel auto"><h3>IOC Nexus</h3><p>Bulk indicator enrichment platform. Rotates VirusTotal API keys, runs WHOIS and RDAP lookups in parallel, supports proxies, and has a light and dark UI.</p><div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">VirusTotal v3</span></div></article>
+    <article class="proj" data-t="intel auto"><h3>CTI Advisory Automation</h3><p>Aggregates 37+ threat intelligence sources into one pipeline and generates the weekly CISO brief automatically.</p><div class="chips"><span class="chip">Python</span><span class="chip">RSS and APIs</span><span class="chip">Reporting</span></div></article>
+    <article class="proj" data-t="asm"><h3>CTI ASM Dashboard and Automation</h3><p>Operational front end for attack surface findings with eleven tabs, owner management and a built-in email composer, plus a browser app that automates the CloudSEK ASM workflow from asset review to triage.</p><div class="chips"><span class="chip">Flask</span><span class="chip">SQLite</span><span class="chip">JavaScript</span><span class="chip">CloudSEK</span></div></article>
+    <article class="proj" data-t="asm auto"><h3>ASM Scanner and Passive DNS Recon</h3><p>Automated external asset discovery with a web UI, plus passive DNS recon tooling for the CTI team.</p><div class="chips"><span class="chip">Python</span><span class="chip">subfinder</span><span class="chip">amass</span><span class="chip">dnsx</span></div></article>
+    <article class="proj" data-t="asm auto"><h3>bbhunter</h3><p>A 22-stage recon pipeline for bug bounty work that runs inside GitHub Codespaces and connects to Burp Suite.</p><div class="chips"><span class="chip">Pipeline</span><span class="chip">Burp Suite</span><span class="chip">Codespaces</span></div></article>
+    <article class="proj" data-t="auto"><h3>VM Security Bot</h3><p>Microsoft Teams integration with Qualys VMDR that brings vulnerability data into the chat tools teams already use.</p><div class="chips"><span class="chip">Teams</span><span class="chip">Qualys VMDR</span><span class="chip">Python</span></div></article>
+    <article class="proj" data-t="intel auto"><h3>NexusOS <span class="pill">In development</span></h3><p>A multi-agent orchestration platform for CTI workflows, currently under active development.</p><div class="chips"><span class="chip">Agents</span><span class="chip">Python</span></div></article>
+    <article class="proj" data-t="intel"><h3>coordwatch</h3><p>Coordinated-activity and misinformation detection for social media intelligence. Collects from Telegram, YouTube and X with free collectors and flags accounts that move together.</p><div class="chips"><span class="chip">Python</span><span class="chip">SOCMINT</span><span class="chip">Telegram</span><span class="chip">YouTube</span><span class="chip">X</span></div></article>
+    <article class="proj" data-t="intel"><h3>Threat Actor Profile Library <span class="pill">In development</span></h3><p>Formal threat actor profiles covering tooling, targeting and techniques, written for SOC, hunting and leadership audiences.</p><div class="chips"><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Diamond Model</span><span class="chip">Reporting</span></div></article>
+  </div>
+  <p style="margin:18px 0 0;color:var(--muted);font-size:15px">Source code for most of these stays private. I am happy to walk through the design and a live demo in an interview.</p>
+</div></section>
+
+<section id="toolkit"><div class="wrap">
+  <div class="sec-head"><span class="mono n">06</span><h2 class="title">Toolkit</h2></div>
+  <div class="tools">
+    <div class="card"><h3>Intelligence platforms</h3><p>Recorded Future, Mandiant, Google Threat Intelligence, ThreatConnect, Silobreaker, CloudSEK, MISP, OpenCTI</p></div>
+    <div class="card"><h3>Detection and response</h3><p>CrowdStrike Falcon, Microsoft Defender for Endpoint, Microsoft Sentinel, Splunk, IBM QRadar, ArcSight, ELK, DNIF</p></div>
+    <div class="card"><h3>Recon and assessment</h3><p>Shodan, Censys, amass, subfinder, dnsx, Burp Suite, Nmap, Nessus, Qualys, Wiz, Proofpoint</p></div>
+    <div class="card"><h3>Frameworks and code</h3><p>MITRE ATT&amp;CK, Diamond Model, Cyber Kill Chain, PIR/SIR/EEI, STIX/TAXII, Python, Flask, SQLite, KQL, JavaScript, REST APIs</p></div>
+  </div>
+  <h3 style="font-family:var(--display);font-size:22px;margin:36px 0 14px">Certifications</h3>
+  <ul class="certs">
+    <li>CEH<span>Certified Ethical Hacker</span></li>
+    <li>CTIA<span>Certified Threat Intelligence Analyst</span></li>
+    <li>CyberIntelligence Foundation<span>Mandiant</span></li>
+    <li>AWS Cloud Practitioner<span>Amazon Web Services</span></li>
+    <li>AWS Security Fundamentals<span>Amazon Web Services</span></li>
+    <li>Network Security Associate<span>Fortinet</span></li>
+    <li>CNSS<span>Certified Network Security Specialist</span></li>
+    <li>8 Mandiant trainings<span>Threat intelligence and response</span></li>
+    <li>5 Google Security trainings<span>Cloud and threat intelligence</span></li>
+  </ul>
+</div></section>
+
+<section id="recognition"><div class="wrap">
+  <div class="sec-head"><span class="mono n">07</span><h2 class="title">Recognition</h2></div>
+  <div class="recog">
+    <div class="card"><h3>Security researcher Hall of Fame</h3><ul><li>Flipkart</li><li>Zeta</li><li>Rackspace</li><li>T-Mobile</li><li>Khan Academy</li></ul></div>
+    <div class="card"><h3>Spot recognition awards</h3><ul><li>Tata Communications, best performer, Q3 2026</li><li>WPP, outstanding individual performance, 2025</li></ul></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+  <div>
+    <div class="sec-head"><span class="mono n">08</span><h2 class="title">Let us talk</h2></div>
+    <p style="max-width:52ch;margin:0 0 12px">I am open to threat intelligence, attack surface management and security engineering roles. The fastest way to reach me is email or LinkedIn.</p>
+    <p style="color:var(--muted);margin:0">Based in Chennai, India.</p>
+  </div>
+  <div class="links">
+    <a href="mailto:danish.kakingare@gmail.com"><span>Email</span><span>danish.kakingare@gmail.com</span></a>
+    <a href="https://www.linkedin.com/in/danishfarazk" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/danishfarazk</span></a>
+    <a href="https://github.com/danishfaraz7" target="_blank" rel="noopener"><span>GitHub</span><span>github.com/danishfaraz7</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap mono"><span>Danish Faraz</span><span>Cyber Threat Intelligence</span></div></footer>
+
+<script>
+(function(){
+  var cycle=[
+    "Direction: I agree priority intelligence requirements with each stakeholder first, so the team knows which questions matter before collecting anything.",
+    "Collection: commercial platforms, open sources, passive DNS, certificate data, and monitored dark web channels, pulled through scripts where possible.",
+    "Processing: normalise, deduplicate and enrich indicators in bulk, and discard what cannot be verified.",
+    "Analysis: link activity to actors and techniques with MITRE ATT&CK, rate confidence and say what I do not know.",
+    "Dissemination: SOC gets indicators and detections, vulnerability teams get ranked exposure, executives get a short weekly brief.",
+    "Feedback: track what teams acted on, drop products nobody uses and tighten the requirements for the next cycle."
+  ];
+  var tabs=[].slice.call(document.querySelectorAll('.cycle button'));
+  var out=document.querySelector('#cycle-out p');
+  function show(i){
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false')});
+    out.textContent=cycle[i];
+  }
+  tabs.forEach(function(t,k){t.addEventListener('click',function(){show(k)})});
+  show(0);
+
+  var fb=[].slice.call(document.querySelectorAll('.filters button'));
+  var cards=[].slice.call(document.querySelectorAll('.proj'));
+  fb.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-f');
+      fb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      cards.forEach(function(c){
+        c.hidden=!(f==='all'||c.getAttribute('data-t').split(' ').indexOf(f)>-1);
+      });
+    });
+  });
+})();
+
+  /* radar */
+  (function(){
+    var d=[["Threat intelligence",9],["Attack surface",9],["Dark web monitoring",8],["Security automation",8],["Vulnerability intel",8],["DFIR support",7],["Red teaming",7]];
+    var svg=document.getElementById('radar'),cx=210,cy=210,R=140,n=d.length,NS='http://www.w3.org/2000/svg';
+    function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt)e.textContent=txt;svg.appendChild(e);return e}
+    function pt(i,r){var a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+    [2,4,6,8,10].forEach(function(v){var p=[];for(var i=0;i<n;i++)p.push(pt(i,R*v/10).join(','));el('polygon',{points:p.join(' '),'class':'ring'})});
+    d.forEach(function(x,i){var p=pt(i,R);el('line',{x1:cx,y1:cy,x2:p[0],y2:p[1],'class':'axis'});
+      var l=pt(i,R+22),anc=l[0]<cx-4?'end':(l[0]>cx+4?'start':'middle');
+      el('text',{x:l[0],y:l[1]+4,'text-anchor':anc},x[0])});
+    var pts=d.map(function(x,i){return pt(i,R*x[1]/10)});
+    el('polygon',{points:pts.map(function(p){return p.join(',')}).join(' '),'class':'shape'});
+    pts.forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:4,'class':'dot'})});
+    var ul=document.getElementById('bars');
+    d.slice().sort(function(a,b){return b[1]-a[1]}).forEach(function(x){
+      var li=document.createElement('li');
+      li.innerHTML='<span></span><span class="track"><span class="fill" style="width:'+x[1]*10+'%"></span></span><span class="v">'+x[1]+'</span>';
+      li.firstChild.textContent=x[0];ul.appendChild(li)});
+  })();
+
+  /* hero network */
+  (function(){
+    var c=document.getElementById('net'),ctx=c.getContext('2d'),nodes=[],W,H,dpr=Math.min(window.devicePixelRatio||1,2);
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+    function size(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+      var n=Math.round(W*H/16000);nodes=[];
+      for(var i=0;i<n;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,hot:Math.random()<.1,p:Math.random()*6})}
+    function draw(t){
+      var line=css('--line'),ink=css('--muted'),acc=css('--accent');
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<nodes.length;i++){var a=nodes[i];
+        for(var j=i+1;j<nodes.length;j++){var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+          if(d<130){ctx.globalAlpha=1-d/130;ctx.strokeStyle=(a.hot||b.hot)?acc:line;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}
+      ctx.globalAlpha=1;
+      nodes.forEach(function(n){
+        if(!reduce){n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1}
+        ctx.fillStyle=n.hot?acc:ink;ctx.beginPath();ctx.arc(n.x,n.y,n.hot?3.5:2,0,7);ctx.fill();
+        if(n.hot){var r=6+((t/60+n.p*10)%14);ctx.globalAlpha=Math.max(0,1-r/20);ctx.strokeStyle=acc;ctx.beginPath();ctx.arc(n.x,n.y,reduce?9:r,0,7);ctx.stroke();ctx.globalAlpha=1}});
+      if(!reduce)requestAnimationFrame(draw)}
+    size();draw(0);
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){size();if(reduce)draw(0)},150)});
+    if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(reduce)draw(0)})}catch(e){}}
+  })();
+</script>
+</body>
+</html>
